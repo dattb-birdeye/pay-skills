@@ -1,0 +1,1859 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Birdeye Data API via x402",
+    "description": "Pay-per-request DeFi market data, token analytics, and wallet intelligence using the x402 payment protocol. Powered by Birdeye. Access real-time Solana metrics without API keys.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Birdeye",
+      "url": "https://birdeye.so"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://public-api.birdeye.so"
+    }
+  ],
+  "paths": {
+    "/x402/defi/historical_price_unix": {
+      "get": {
+        "summary": "Get token price at a specific Unix timestamp",
+        "operationId": "x402_defi_historical_price_unix",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/history_price": {
+      "get": {
+        "summary": "Get historical price series for a token or pair",
+        "operationId": "x402_defi_history_price",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token or pair address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/ohlcv": {
+      "get": {
+        "summary": "Get OHLCV candlestick data for a token",
+        "operationId": "x402_defi_ohlcv",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/ohlcv/base_quote": {
+      "get": {
+        "summary": "Get OHLCV candlestick data by base and quote token addresses",
+        "operationId": "x402_defi_ohlcv_base_quote",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Base token address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/ohlcv/pair": {
+      "get": {
+        "summary": "Get OHLCV candlestick data for a trading pair",
+        "operationId": "x402_defi_ohlcv_pair",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Pair address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/price": {
+      "get": {
+        "summary": "Get real-time price for a token",
+        "operationId": "x402_defi_price",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/price_volume/single": {
+      "get": {
+        "summary": "Get current price and 24h volume for a single token",
+        "operationId": "x402_defi_price_volume_single",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/token_creation_info": {
+      "get": {
+        "summary": "Get creation info and genesis data for a token",
+        "operationId": "x402_defi_token_creation_info",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/token_overview": {
+      "get": {
+        "summary": "Get comprehensive overview of a token including price, volume, liquidity, and metadata",
+        "operationId": "x402_defi_token_overview",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/token_security": {
+      "get": {
+        "summary": "Get security analysis and rug pull risk indicators for a token",
+        "operationId": "x402_defi_token_security",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/token_trending": {
+      "get": {
+        "summary": "List currently trending tokens by trading activity",
+        "operationId": "x402_defi_token_trending",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/tokenlist": {
+      "get": {
+        "summary": "List tokens with market data including price, volume, and liquidity",
+        "operationId": "x402_defi_tokenlist",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/txs/pair": {
+      "get": {
+        "summary": "List recent swap transactions for a trading pair",
+        "operationId": "x402_defi_txs_pair",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Pair address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/txs/pair/seek_by_time": {
+      "get": {
+        "summary": "Search pair swap transactions starting from a given timestamp",
+        "operationId": "x402_defi_txs_pair_seek_by_time",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Pair address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/txs/token": {
+      "get": {
+        "summary": "List recent transactions for a token",
+        "operationId": "x402_defi_txs_token",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/txs/token/seek_by_time": {
+      "get": {
+        "summary": "Search token transactions starting from a given timestamp",
+        "operationId": "x402_defi_txs_token_seek_by_time",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v2/markets": {
+      "get": {
+        "summary": "List all trading markets for a token across DEXes",
+        "operationId": "x402_defi_v2_markets",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v2/tokens/new_listing": {
+      "get": {
+        "summary": "List newly listed tokens sorted by listing time",
+        "operationId": "x402_defi_v2_tokens_new_listing",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v2/tokens/top_traders": {
+      "get": {
+        "summary": "List top traders for a token by volume or PnL",
+        "operationId": "x402_defi_v2_tokens_top_traders",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/all-time/trades/single": {
+      "get": {
+        "summary": "Get all-time trade summary statistics for a token",
+        "operationId": "x402_defi_v3_all_time_trades_single",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/holder-stats/single": {
+      "get": {
+        "summary": "Get holder count and concentration statistics for a token",
+        "operationId": "x402_defi_v3_holder_stats_single",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/ohlcv": {
+      "get": {
+        "summary": "Get v3 OHLCV candlestick data for a token",
+        "operationId": "x402_defi_v3_ohlcv",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/ohlcv/pair": {
+      "get": {
+        "summary": "Get v3 OHLCV candlestick data for a trading pair",
+        "operationId": "x402_defi_v3_ohlcv_pair",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Pair address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/pair/overview/single": {
+      "get": {
+        "summary": "Get detailed overview of a single trading pair including price and liquidity",
+        "operationId": "x402_defi_v3_pair_overview_single",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Pair address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/price/stats/single": {
+      "get": {
+        "summary": "Get price change statistics across multiple timeframes for a single token",
+        "operationId": "x402_defi_v3_price_stats_single",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/search": {
+      "get": {
+        "summary": "Search tokens and pairs by name, symbol, or address",
+        "operationId": "x402_defi_v3_search",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/token/exit-liquidity": {
+      "get": {
+        "summary": "Get exit liquidity data and sell pressure signals for a token",
+        "operationId": "x402_defi_v3_token_exit_liquidity",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/token/holder": {
+      "get": {
+        "summary": "List token holders with wallet addresses and balances",
+        "operationId": "x402_defi_v3_token_holder",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/token/list": {
+      "get": {
+        "summary": "List tokens with v3 market data including price, volume, and market cap",
+        "operationId": "x402_defi_v3_token_list",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/token/market-data": {
+      "get": {
+        "summary": "Get market data for a token including price, volume, liquidity, and market cap",
+        "operationId": "x402_defi_v3_token_market_data",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/token/meme/detail/single": {
+      "get": {
+        "summary": "Get detailed meme token metrics including social signals and price momentum",
+        "operationId": "x402_defi_v3_token_meme_detail_single",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/token/meme/list": {
+      "get": {
+        "summary": "List meme tokens with social signals, price momentum, and trading activity",
+        "operationId": "x402_defi_v3_token_meme_list",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/token/meta-data/single": {
+      "get": {
+        "summary": "Get metadata for a single token including name, symbol, decimals, and logo",
+        "operationId": "x402_defi_v3_token_meta_data_single",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/token/mint-burn-txs": {
+      "get": {
+        "summary": "List mint and burn transactions for a token",
+        "operationId": "x402_defi_v3_token_mint_burn_txs",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/token/trade-data/single": {
+      "get": {
+        "summary": "Get trade metrics for a single token including buy/sell counts and volume",
+        "operationId": "x402_defi_v3_token_trade_data_single",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/token/txs": {
+      "get": {
+        "summary": "List trades for a specific token",
+        "operationId": "x402_defi_v3_token_txs",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/token/txs-by-volume": {
+      "get": {
+        "summary": "List token trades filtered and sorted by volume",
+        "operationId": "x402_defi_v3_token_txs_by_volume",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/txs": {
+      "get": {
+        "summary": "List trades across all tokens or filtered by a specified address",
+        "operationId": "x402_defi_v3_txs",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Optional token or pair address filter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/txs/latest-block": {
+      "get": {
+        "summary": "Get the latest indexed block number for a chain",
+        "operationId": "x402_defi_v3_txs_latest_block",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/defi/v3/txs/recent": {
+      "get": {
+        "summary": "List the most recent trades across all tokens",
+        "operationId": "x402_defi_v3_txs_recent",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/holder/v1/distribution": {
+      "get": {
+        "summary": "Get holder distribution breakdown by wallet size tiers for a token",
+        "operationId": "x402_holder_v1_distribution",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Token mint address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/smart-money/v1/token/list": {
+      "get": {
+        "summary": "List tokens with smart money wallet activity and flow signals",
+        "operationId": "x402_smart_money_v1_token_list",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/token/v1/holder/batch": {
+      "post": {
+        "summary": "Check holder status for multiple wallet addresses in a single request",
+        "operationId": "x402_token_v1_holder_batch",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/x402/token/v1/transfer": {
+      "post": {
+        "summary": "List token transfer transactions for given wallet addresses",
+        "operationId": "x402_token_v1_transfer",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/x402/token/v1/transfer/total": {
+      "post": {
+        "summary": "Get total token transfer count and volume for given wallet addresses",
+        "operationId": "x402_token_v1_transfer_total",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/x402/trader/gainers-losers": {
+      "get": {
+        "summary": "List top gaining and losing traders by PnL over a time period",
+        "operationId": "x402_trader_gainers_losers",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    },
+    "/x402/trader/txs/seek_by_time": {
+      "get": {
+        "summary": "Search trader transactions starting from a given timestamp",
+        "operationId": "x402_trader_txs_seek_by_time",
+        "parameters": [
+          {
+            "name": "x-chain",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "solana"
+            }
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Trader wallet address"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "402": {
+            "description": "Payment Required"
+          }
+        },
+        "x-pricing": {
+          "supportedPaymentMethods": [
+            "x402"
+          ],
+          "pricingMode": "variable",
+          "unit": "cu"
+        }
+      }
+    }
+  }
+}
