@@ -11,7 +11,7 @@ openapi:
 
 Birdeye DeFi market data, token analytics, and wallet intelligence via x402 payments. Covers 47 endpoints across price feeds, OHLCV charts, holder analytics, smart money flows, meme token signals, trade history, and token security — all without API keys.
 
-Pricing is variable and charged in compute units (CUs); most single-token lookups cost $0.001–$0.01 per request. Multi-address bulk endpoints and WebSocket streams require a standard Birdeye API key and are not available via x402.
+Pricing is variable and charged in compute units (CUs); most single-token lookups cost $0.001–$0.01 per request. WebSocket streams require a standard Birdeye API key and are not available via x402.
 
 x402 USDC payment accepted on Solana mainnet.
 
