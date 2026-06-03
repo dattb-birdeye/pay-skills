@@ -56,6 +56,44 @@
             "description": "Success",
             "content": {
               "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "success",
+                    "data"
+                  ],
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "properties": {
+                        "isScaledUiToken": {
+                          "type": "boolean"
+                        },
+                        "value": {
+                          "type": "number"
+                        },
+                        "updateUnixTime": {
+                          "type": "integer"
+                        },
+                        "priceChange24h": {
+                          "type": "number"
+                        },
+                        "scaledValue": {
+                          "type": "number"
+                        },
+                        "multiplier": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                },
                 "examples": {
                   "Solana": {
                     "value": {
@@ -663,7 +701,10 @@
                           "type": "number"
                         },
                         "multiplierQuote": {
-                          "type": "number"
+                          "type": [
+                            "number",
+                            "null"
+                          ]
                         },
                         "items": {
                           "type": "array",
@@ -674,9 +715,8 @@
                               "h",
                               "l",
                               "c",
-                              "v",
-                              "address",
-                              "type",
+                              "vBase",
+                              "vQuote",
                               "unixTime"
                             ],
                             "properties": {
@@ -1049,7 +1089,10 @@
                       "type": "boolean"
                     },
                     "data": {
-                      "type": "object",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
                       "required": [
                         "value",
                         "updateUnixTime",
@@ -1220,7 +1263,10 @@
                           "type": "number"
                         },
                         "volumeChangePercent": {
-                          "type": ["number", "null"]
+                          "type": [
+                            "number",
+                            "null"
+                          ]
                         },
                         "priceChangePercent": {
                           "type": "number"
@@ -1387,7 +1433,7 @@
     },
     "/x402/defi/token_overview": {
       "get": {
-        "summary": "Get comprehensive overview of a token including price, volume, liquidity, and metadata",
+        "summary": "Get token overview: price, volume, liquidity, and metadata",
         "operationId": "x402_defi_token_overview",
         "parameters": [
           {
@@ -1425,7 +1471,1170 @@
                       "type": "boolean"
                     },
                     "data": {
-                      "type": "object"
+                      "type": "object",
+                      "required": [
+                        "address",
+                        "decimals",
+                        "symbol",
+                        "name",
+                        "price"
+                      ],
+                      "properties": {
+                        "address": {
+                          "type": "string"
+                        },
+                        "decimals": {
+                          "type": "integer"
+                        },
+                        "symbol": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "marketCap": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "fdv": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "extensions": {
+                          "type": "object",
+                          "properties": {
+                            "coingeckoId": {
+                              "type": "string"
+                            },
+                            "serumV3Usdc": {
+                              "type": "string"
+                            },
+                            "serumV3Usdt": {
+                              "type": "string"
+                            },
+                            "website": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "telegram": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "twitter": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "description": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "discord": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "medium": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        },
+                        "logoURI": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "liquidity": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "lastTradeUnixTime": {
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "lastTradeHumanTime": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "price": {
+                          "type": "number"
+                        },
+                        "totalSupply": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "circulatingSupply": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "holder": {
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "numberMarkets": {
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "isScaledUiToken": {
+                          "type": "boolean"
+                        },
+                        "multiplier": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade1m": {
+                          "type": "integer"
+                        },
+                        "tradeHistory1m": {
+                          "type": "integer"
+                        },
+                        "trade1mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "sell1m": {
+                          "type": "integer"
+                        },
+                        "sellHistory1m": {
+                          "type": "integer"
+                        },
+                        "sell1mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "buy1m": {
+                          "type": "integer"
+                        },
+                        "buyHistory1m": {
+                          "type": "integer"
+                        },
+                        "buy1mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "v1m": {
+                          "type": "number"
+                        },
+                        "v1mUSD": {
+                          "type": "number"
+                        },
+                        "vHistory1m": {
+                          "type": "number"
+                        },
+                        "vHistory1mUSD": {
+                          "type": "number"
+                        },
+                        "v1mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vBuy1m": {
+                          "type": "number"
+                        },
+                        "vBuy1mUSD": {
+                          "type": "number"
+                        },
+                        "vBuyHistory1m": {
+                          "type": "number"
+                        },
+                        "vBuyHistory1mUSD": {
+                          "type": "number"
+                        },
+                        "vBuy1mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vSell1m": {
+                          "type": "number"
+                        },
+                        "vSell1mUSD": {
+                          "type": "number"
+                        },
+                        "vSellHistory1m": {
+                          "type": "number"
+                        },
+                        "vSellHistory1mUSD": {
+                          "type": "number"
+                        },
+                        "vSell1mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "uniqueWallet1m": {
+                          "type": "integer"
+                        },
+                        "uniqueWalletHistory1m": {
+                          "type": "integer"
+                        },
+                        "uniqueWallet1mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade5m": {
+                          "type": "integer"
+                        },
+                        "tradeHistory5m": {
+                          "type": "integer"
+                        },
+                        "trade5mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "sell5m": {
+                          "type": "integer"
+                        },
+                        "sellHistory5m": {
+                          "type": "integer"
+                        },
+                        "sell5mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "buy5m": {
+                          "type": "integer"
+                        },
+                        "buyHistory5m": {
+                          "type": "integer"
+                        },
+                        "buy5mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "v5m": {
+                          "type": "number"
+                        },
+                        "v5mUSD": {
+                          "type": "number"
+                        },
+                        "vHistory5m": {
+                          "type": "number"
+                        },
+                        "vHistory5mUSD": {
+                          "type": "number"
+                        },
+                        "v5mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vBuy5m": {
+                          "type": "number"
+                        },
+                        "vBuy5mUSD": {
+                          "type": "number"
+                        },
+                        "vBuyHistory5m": {
+                          "type": "number"
+                        },
+                        "vBuyHistory5mUSD": {
+                          "type": "number"
+                        },
+                        "vBuy5mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vSell5m": {
+                          "type": "number"
+                        },
+                        "vSell5mUSD": {
+                          "type": "number"
+                        },
+                        "vSellHistory5m": {
+                          "type": "number"
+                        },
+                        "vSellHistory5mUSD": {
+                          "type": "number"
+                        },
+                        "vSell5mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "uniqueWallet5m": {
+                          "type": "integer"
+                        },
+                        "uniqueWalletHistory5m": {
+                          "type": "integer"
+                        },
+                        "uniqueWallet5mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade30m": {
+                          "type": "integer"
+                        },
+                        "tradeHistory30m": {
+                          "type": "integer"
+                        },
+                        "trade30mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "sell30m": {
+                          "type": "integer"
+                        },
+                        "sellHistory30m": {
+                          "type": "integer"
+                        },
+                        "sell30mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "buy30m": {
+                          "type": "integer"
+                        },
+                        "buyHistory30m": {
+                          "type": "integer"
+                        },
+                        "buy30mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "v30m": {
+                          "type": "number"
+                        },
+                        "v30mUSD": {
+                          "type": "number"
+                        },
+                        "vHistory30m": {
+                          "type": "number"
+                        },
+                        "vHistory30mUSD": {
+                          "type": "number"
+                        },
+                        "v30mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vBuy30m": {
+                          "type": "number"
+                        },
+                        "vBuy30mUSD": {
+                          "type": "number"
+                        },
+                        "vBuyHistory30m": {
+                          "type": "number"
+                        },
+                        "vBuyHistory30mUSD": {
+                          "type": "number"
+                        },
+                        "vBuy30mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vSell30m": {
+                          "type": "number"
+                        },
+                        "vSell30mUSD": {
+                          "type": "number"
+                        },
+                        "vSellHistory30m": {
+                          "type": "number"
+                        },
+                        "vSellHistory30mUSD": {
+                          "type": "number"
+                        },
+                        "vSell30mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "uniqueWallet30m": {
+                          "type": "integer"
+                        },
+                        "uniqueWalletHistory30m": {
+                          "type": "integer"
+                        },
+                        "uniqueWallet30mChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade1h": {
+                          "type": "integer"
+                        },
+                        "tradeHistory1h": {
+                          "type": "integer"
+                        },
+                        "trade1hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "sell1h": {
+                          "type": "integer"
+                        },
+                        "sellHistory1h": {
+                          "type": "integer"
+                        },
+                        "sell1hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "buy1h": {
+                          "type": "integer"
+                        },
+                        "buyHistory1h": {
+                          "type": "integer"
+                        },
+                        "buy1hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "v1h": {
+                          "type": "number"
+                        },
+                        "v1hUSD": {
+                          "type": "number"
+                        },
+                        "vHistory1h": {
+                          "type": "number"
+                        },
+                        "vHistory1hUSD": {
+                          "type": "number"
+                        },
+                        "v1hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vBuy1h": {
+                          "type": "number"
+                        },
+                        "vBuy1hUSD": {
+                          "type": "number"
+                        },
+                        "vBuyHistory1h": {
+                          "type": "number"
+                        },
+                        "vBuyHistory1hUSD": {
+                          "type": "number"
+                        },
+                        "vBuy1hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vSell1h": {
+                          "type": "number"
+                        },
+                        "vSell1hUSD": {
+                          "type": "number"
+                        },
+                        "vSellHistory1h": {
+                          "type": "number"
+                        },
+                        "vSellHistory1hUSD": {
+                          "type": "number"
+                        },
+                        "vSell1hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "uniqueWallet1h": {
+                          "type": "integer"
+                        },
+                        "uniqueWalletHistory1h": {
+                          "type": "integer"
+                        },
+                        "uniqueWallet1hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade2h": {
+                          "type": "integer"
+                        },
+                        "tradeHistory2h": {
+                          "type": "integer"
+                        },
+                        "trade2hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "sell2h": {
+                          "type": "integer"
+                        },
+                        "sellHistory2h": {
+                          "type": "integer"
+                        },
+                        "sell2hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "buy2h": {
+                          "type": "integer"
+                        },
+                        "buyHistory2h": {
+                          "type": "integer"
+                        },
+                        "buy2hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "v2h": {
+                          "type": "number"
+                        },
+                        "v2hUSD": {
+                          "type": "number"
+                        },
+                        "vHistory2h": {
+                          "type": "number"
+                        },
+                        "vHistory2hUSD": {
+                          "type": "number"
+                        },
+                        "v2hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vBuy2h": {
+                          "type": "number"
+                        },
+                        "vBuy2hUSD": {
+                          "type": "number"
+                        },
+                        "vBuyHistory2h": {
+                          "type": "number"
+                        },
+                        "vBuyHistory2hUSD": {
+                          "type": "number"
+                        },
+                        "vBuy2hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vSell2h": {
+                          "type": "number"
+                        },
+                        "vSell2hUSD": {
+                          "type": "number"
+                        },
+                        "vSellHistory2h": {
+                          "type": "number"
+                        },
+                        "vSellHistory2hUSD": {
+                          "type": "number"
+                        },
+                        "vSell2hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "uniqueWallet2h": {
+                          "type": "integer"
+                        },
+                        "uniqueWalletHistory2h": {
+                          "type": "integer"
+                        },
+                        "uniqueWallet2hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade4h": {
+                          "type": "integer"
+                        },
+                        "tradeHistory4h": {
+                          "type": "integer"
+                        },
+                        "trade4hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "sell4h": {
+                          "type": "integer"
+                        },
+                        "sellHistory4h": {
+                          "type": "integer"
+                        },
+                        "sell4hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "buy4h": {
+                          "type": "integer"
+                        },
+                        "buyHistory4h": {
+                          "type": "integer"
+                        },
+                        "buy4hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "v4h": {
+                          "type": "number"
+                        },
+                        "v4hUSD": {
+                          "type": "number"
+                        },
+                        "vHistory4h": {
+                          "type": "number"
+                        },
+                        "vHistory4hUSD": {
+                          "type": "number"
+                        },
+                        "v4hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vBuy4h": {
+                          "type": "number"
+                        },
+                        "vBuy4hUSD": {
+                          "type": "number"
+                        },
+                        "vBuyHistory4h": {
+                          "type": "number"
+                        },
+                        "vBuyHistory4hUSD": {
+                          "type": "number"
+                        },
+                        "vBuy4hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vSell4h": {
+                          "type": "number"
+                        },
+                        "vSell4hUSD": {
+                          "type": "number"
+                        },
+                        "vSellHistory4h": {
+                          "type": "number"
+                        },
+                        "vSellHistory4hUSD": {
+                          "type": "number"
+                        },
+                        "vSell4hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "uniqueWallet4h": {
+                          "type": "integer"
+                        },
+                        "uniqueWalletHistory4h": {
+                          "type": "integer"
+                        },
+                        "uniqueWallet4hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade6h": {
+                          "type": "integer"
+                        },
+                        "tradeHistory6h": {
+                          "type": "integer"
+                        },
+                        "trade6hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "sell6h": {
+                          "type": "integer"
+                        },
+                        "sellHistory6h": {
+                          "type": "integer"
+                        },
+                        "sell6hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "buy6h": {
+                          "type": "integer"
+                        },
+                        "buyHistory6h": {
+                          "type": "integer"
+                        },
+                        "buy6hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "v6h": {
+                          "type": "number"
+                        },
+                        "v6hUSD": {
+                          "type": "number"
+                        },
+                        "vHistory6h": {
+                          "type": "number"
+                        },
+                        "vHistory6hUSD": {
+                          "type": "number"
+                        },
+                        "v6hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vBuy6h": {
+                          "type": "number"
+                        },
+                        "vBuy6hUSD": {
+                          "type": "number"
+                        },
+                        "vBuyHistory6h": {
+                          "type": "number"
+                        },
+                        "vBuyHistory6hUSD": {
+                          "type": "number"
+                        },
+                        "vBuy6hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vSell6h": {
+                          "type": "number"
+                        },
+                        "vSell6hUSD": {
+                          "type": "number"
+                        },
+                        "vSellHistory6h": {
+                          "type": "number"
+                        },
+                        "vSellHistory6hUSD": {
+                          "type": "number"
+                        },
+                        "vSell6hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "uniqueWallet6h": {
+                          "type": "integer"
+                        },
+                        "uniqueWalletHistory6h": {
+                          "type": "integer"
+                        },
+                        "uniqueWallet6hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade8h": {
+                          "type": "integer"
+                        },
+                        "tradeHistory8h": {
+                          "type": "integer"
+                        },
+                        "trade8hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "sell8h": {
+                          "type": "integer"
+                        },
+                        "sellHistory8h": {
+                          "type": "integer"
+                        },
+                        "sell8hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "buy8h": {
+                          "type": "integer"
+                        },
+                        "buyHistory8h": {
+                          "type": "integer"
+                        },
+                        "buy8hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "v8h": {
+                          "type": "number"
+                        },
+                        "v8hUSD": {
+                          "type": "number"
+                        },
+                        "vHistory8h": {
+                          "type": "number"
+                        },
+                        "vHistory8hUSD": {
+                          "type": "number"
+                        },
+                        "v8hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vBuy8h": {
+                          "type": "number"
+                        },
+                        "vBuy8hUSD": {
+                          "type": "number"
+                        },
+                        "vBuyHistory8h": {
+                          "type": "number"
+                        },
+                        "vBuyHistory8hUSD": {
+                          "type": "number"
+                        },
+                        "vBuy8hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vSell8h": {
+                          "type": "number"
+                        },
+                        "vSell8hUSD": {
+                          "type": "number"
+                        },
+                        "vSellHistory8h": {
+                          "type": "number"
+                        },
+                        "vSellHistory8hUSD": {
+                          "type": "number"
+                        },
+                        "vSell8hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "uniqueWallet8h": {
+                          "type": "integer"
+                        },
+                        "uniqueWalletHistory8h": {
+                          "type": "integer"
+                        },
+                        "uniqueWallet8hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade12h": {
+                          "type": "integer"
+                        },
+                        "tradeHistory12h": {
+                          "type": "integer"
+                        },
+                        "trade12hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "sell12h": {
+                          "type": "integer"
+                        },
+                        "sellHistory12h": {
+                          "type": "integer"
+                        },
+                        "sell12hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "buy12h": {
+                          "type": "integer"
+                        },
+                        "buyHistory12h": {
+                          "type": "integer"
+                        },
+                        "buy12hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "v12h": {
+                          "type": "number"
+                        },
+                        "v12hUSD": {
+                          "type": "number"
+                        },
+                        "vHistory12h": {
+                          "type": "number"
+                        },
+                        "vHistory12hUSD": {
+                          "type": "number"
+                        },
+                        "v12hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vBuy12h": {
+                          "type": "number"
+                        },
+                        "vBuy12hUSD": {
+                          "type": "number"
+                        },
+                        "vBuyHistory12h": {
+                          "type": "number"
+                        },
+                        "vBuyHistory12hUSD": {
+                          "type": "number"
+                        },
+                        "vBuy12hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vSell12h": {
+                          "type": "number"
+                        },
+                        "vSell12hUSD": {
+                          "type": "number"
+                        },
+                        "vSellHistory12h": {
+                          "type": "number"
+                        },
+                        "vSellHistory12hUSD": {
+                          "type": "number"
+                        },
+                        "vSell12hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "uniqueWallet12h": {
+                          "type": "integer"
+                        },
+                        "uniqueWalletHistory12h": {
+                          "type": "integer"
+                        },
+                        "uniqueWallet12hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade24h": {
+                          "type": "integer"
+                        },
+                        "tradeHistory24h": {
+                          "type": "integer"
+                        },
+                        "trade24hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "sell24h": {
+                          "type": "integer"
+                        },
+                        "sellHistory24h": {
+                          "type": "integer"
+                        },
+                        "sell24hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "buy24h": {
+                          "type": "integer"
+                        },
+                        "buyHistory24h": {
+                          "type": "integer"
+                        },
+                        "buy24hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "v24h": {
+                          "type": "number"
+                        },
+                        "v24hUSD": {
+                          "type": "number"
+                        },
+                        "vHistory24h": {
+                          "type": "number"
+                        },
+                        "vHistory24hUSD": {
+                          "type": "number"
+                        },
+                        "v24hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vBuy24h": {
+                          "type": "number"
+                        },
+                        "vBuy24hUSD": {
+                          "type": "number"
+                        },
+                        "vBuyHistory24h": {
+                          "type": "number"
+                        },
+                        "vBuyHistory24hUSD": {
+                          "type": "number"
+                        },
+                        "vBuy24hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "vSell24h": {
+                          "type": "number"
+                        },
+                        "vSell24hUSD": {
+                          "type": "number"
+                        },
+                        "vSellHistory24h": {
+                          "type": "number"
+                        },
+                        "vSellHistory24hUSD": {
+                          "type": "number"
+                        },
+                        "vSell24hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "uniqueWallet24h": {
+                          "type": "integer"
+                        },
+                        "uniqueWalletHistory24h": {
+                          "type": "integer"
+                        },
+                        "uniqueWallet24hChangePercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        }
+                      }
                     }
                   }
                 },
@@ -2027,7 +3236,213 @@
                       "type": "boolean"
                     },
                     "data": {
-                      "type": "object"
+                      "type": "object",
+                      "properties": {
+                        "creatorAddress": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "creatorOwnerAddress": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "ownerAddress": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "ownerOfOwnerAddress": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "creationTx": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "creationTime": {
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "creationSlot": {
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "mintTx": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "mintTime": {
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "mintSlot": {
+                          "type": [
+                            "integer",
+                            "null"
+                          ]
+                        },
+                        "creatorBalance": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "ownerBalance": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "ownerPercentage": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "creatorPercentage": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "metaplexUpdateAuthority": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "metaplexOwnerUpdateAuthority": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "metaplexUpdateAuthorityBalance": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "metaplexUpdateAuthorityPercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "mutableMetadata": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "top10HolderBalance": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "top10HolderPercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "top10UserBalance": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "top10UserPercent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "isTrueToken": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "fakeToken": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "totalSupply": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "preMarketHolder": {
+                          "type": "array"
+                        },
+                        "lockInfo": {
+                          "type": [
+                            "object",
+                            "null"
+                          ]
+                        },
+                        "freezeable": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "freezeAuthority": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "transferFeeEnable": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "transferFeeData": {
+                          "type": [
+                            "object",
+                            "null"
+                          ]
+                        },
+                        "isToken2022": {
+                          "type": "boolean"
+                        },
+                        "nonTransferable": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        },
+                        "jupStrictList": {
+                          "type": [
+                            "boolean",
+                            "null"
+                          ]
+                        }
+                      }
                     }
                   }
                 },
@@ -2223,7 +3638,10 @@
                                 "type": "number"
                               },
                               "logoURI": {
-                                "type": "string"
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
                               },
                               "name": {
                                 "type": "string"
@@ -2363,7 +3781,7 @@
     },
     "/x402/defi/tokenlist": {
       "get": {
-        "summary": "List tokens with market data including price, volume, and liquidity",
+        "summary": "List tokens with price, volume, and liquidity data",
         "operationId": "x402_defi_tokenlist",
         "parameters": [
           {
@@ -2421,7 +3839,10 @@
                                 "type": "number"
                               },
                               "logoURI": {
-                                "type": "string"
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
                               },
                               "mc": {
                                 "type": "number"
@@ -2577,7 +3998,143 @@
                         "items": {
                           "type": "array",
                           "items": {
-                            "type": "object"
+                            "type": "object",
+                            "required": [
+                              "txHash",
+                              "source",
+                              "blockUnixTime",
+                              "txType",
+                              "address",
+                              "owner",
+                              "from",
+                              "to"
+                            ],
+                            "properties": {
+                              "txHash": {
+                                "type": "string"
+                              },
+                              "source": {
+                                "type": "string"
+                              },
+                              "blockUnixTime": {
+                                "type": "integer"
+                              },
+                              "txType": {
+                                "type": "string"
+                              },
+                              "address": {
+                                "type": "string"
+                              },
+                              "owner": {
+                                "type": "string"
+                              },
+                              "from": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": "integer"
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "typeSwap": {
+                                    "type": "string"
+                                  },
+                                  "uiAmount": {
+                                    "type": "number"
+                                  },
+                                  "price": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "nearestPrice": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "changeAmount": {
+                                    "type": "integer"
+                                  },
+                                  "uiChangeAmount": {
+                                    "type": "number"
+                                  },
+                                  "isScaledUiToken": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "to": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": "integer"
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "typeSwap": {
+                                    "type": "string"
+                                  },
+                                  "uiAmount": {
+                                    "type": "number"
+                                  },
+                                  "price": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "nearestPrice": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "changeAmount": {
+                                    "type": "integer"
+                                  },
+                                  "uiChangeAmount": {
+                                    "type": "number"
+                                  },
+                                  "isScaledUiToken": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
                           }
                         },
                         "hasNext": {
@@ -2804,7 +4361,143 @@
                         "items": {
                           "type": "array",
                           "items": {
-                            "type": "object"
+                            "type": "object",
+                            "required": [
+                              "txHash",
+                              "source",
+                              "blockUnixTime",
+                              "txType",
+                              "address",
+                              "owner",
+                              "from",
+                              "to"
+                            ],
+                            "properties": {
+                              "txHash": {
+                                "type": "string"
+                              },
+                              "source": {
+                                "type": "string"
+                              },
+                              "blockUnixTime": {
+                                "type": "integer"
+                              },
+                              "txType": {
+                                "type": "string"
+                              },
+                              "address": {
+                                "type": "string"
+                              },
+                              "owner": {
+                                "type": "string"
+                              },
+                              "from": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": "integer"
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "typeSwap": {
+                                    "type": "string"
+                                  },
+                                  "uiAmount": {
+                                    "type": "number"
+                                  },
+                                  "price": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "nearestPrice": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "changeAmount": {
+                                    "type": "integer"
+                                  },
+                                  "uiChangeAmount": {
+                                    "type": "number"
+                                  },
+                                  "isScaledUiToken": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "to": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": "integer"
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "typeSwap": {
+                                    "type": "string"
+                                  },
+                                  "uiAmount": {
+                                    "type": "number"
+                                  },
+                                  "price": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "nearestPrice": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "changeAmount": {
+                                    "type": "integer"
+                                  },
+                                  "uiChangeAmount": {
+                                    "type": "number"
+                                  },
+                                  "isScaledUiToken": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
                           }
                         },
                         "hasNext": {
@@ -3005,7 +4698,293 @@
                         "items": {
                           "type": "array",
                           "items": {
-                            "type": "object"
+                            "type": "object",
+                            "required": [
+                              "txHash",
+                              "source",
+                              "blockUnixTime",
+                              "txType",
+                              "owner",
+                              "from",
+                              "to"
+                            ],
+                            "properties": {
+                              "txHash": {
+                                "type": "string"
+                              },
+                              "source": {
+                                "type": "string"
+                              },
+                              "blockUnixTime": {
+                                "type": "integer"
+                              },
+                              "txType": {
+                                "type": "string"
+                              },
+                              "owner": {
+                                "type": "string"
+                              },
+                              "side": {
+                                "type": "string"
+                              },
+                              "alias": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "pricePair": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "basePrice": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "quotePrice": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "tokenPrice": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "poolId": {
+                                "type": "string"
+                              },
+                              "from": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": [
+                                      "integer",
+                                      "string"
+                                    ]
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "typeSwap": {
+                                    "type": "string"
+                                  },
+                                  "uiAmount": {
+                                    "type": "number"
+                                  },
+                                  "price": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "nearestPrice": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "changeAmount": {
+                                    "type": "integer"
+                                  },
+                                  "uiChangeAmount": {
+                                    "type": "number"
+                                  },
+                                  "isScaledUiToken": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "to": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": [
+                                      "integer",
+                                      "string"
+                                    ]
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "typeSwap": {
+                                    "type": "string"
+                                  },
+                                  "uiAmount": {
+                                    "type": "number"
+                                  },
+                                  "price": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "nearestPrice": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "changeAmount": {
+                                    "type": "integer"
+                                  },
+                                  "uiChangeAmount": {
+                                    "type": "number"
+                                  },
+                                  "isScaledUiToken": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "base": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": [
+                                      "integer",
+                                      "string"
+                                    ]
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "typeSwap": {
+                                    "type": "string"
+                                  },
+                                  "uiAmount": {
+                                    "type": "number"
+                                  },
+                                  "price": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "nearestPrice": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "changeAmount": {
+                                    "type": "integer"
+                                  },
+                                  "uiChangeAmount": {
+                                    "type": "number"
+                                  },
+                                  "isScaledUiToken": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "quote": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": [
+                                      "integer",
+                                      "string"
+                                    ]
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "typeSwap": {
+                                    "type": "string"
+                                  },
+                                  "uiAmount": {
+                                    "type": "number"
+                                  },
+                                  "price": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "nearestPrice": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "changeAmount": {
+                                    "type": "integer"
+                                  },
+                                  "uiChangeAmount": {
+                                    "type": "number"
+                                  },
+                                  "isScaledUiToken": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
                           }
                         },
                         "hasNext": {
@@ -3312,7 +5291,293 @@
                         "items": {
                           "type": "array",
                           "items": {
-                            "type": "object"
+                            "type": "object",
+                            "required": [
+                              "txHash",
+                              "source",
+                              "blockUnixTime",
+                              "txType",
+                              "owner",
+                              "from",
+                              "to"
+                            ],
+                            "properties": {
+                              "txHash": {
+                                "type": "string"
+                              },
+                              "source": {
+                                "type": "string"
+                              },
+                              "blockUnixTime": {
+                                "type": "integer"
+                              },
+                              "txType": {
+                                "type": "string"
+                              },
+                              "owner": {
+                                "type": "string"
+                              },
+                              "side": {
+                                "type": "string"
+                              },
+                              "alias": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "pricePair": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "basePrice": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "quotePrice": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "tokenPrice": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "poolId": {
+                                "type": "string"
+                              },
+                              "from": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": [
+                                      "integer",
+                                      "string"
+                                    ]
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "typeSwap": {
+                                    "type": "string"
+                                  },
+                                  "uiAmount": {
+                                    "type": "number"
+                                  },
+                                  "price": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "nearestPrice": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "changeAmount": {
+                                    "type": "integer"
+                                  },
+                                  "uiChangeAmount": {
+                                    "type": "number"
+                                  },
+                                  "isScaledUiToken": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "to": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": [
+                                      "integer",
+                                      "string"
+                                    ]
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "typeSwap": {
+                                    "type": "string"
+                                  },
+                                  "uiAmount": {
+                                    "type": "number"
+                                  },
+                                  "price": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "nearestPrice": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "changeAmount": {
+                                    "type": "integer"
+                                  },
+                                  "uiChangeAmount": {
+                                    "type": "number"
+                                  },
+                                  "isScaledUiToken": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "base": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": [
+                                      "integer",
+                                      "string"
+                                    ]
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "typeSwap": {
+                                    "type": "string"
+                                  },
+                                  "uiAmount": {
+                                    "type": "number"
+                                  },
+                                  "price": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "nearestPrice": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "changeAmount": {
+                                    "type": "integer"
+                                  },
+                                  "uiChangeAmount": {
+                                    "type": "number"
+                                  },
+                                  "isScaledUiToken": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "quote": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": [
+                                      "integer",
+                                      "string"
+                                    ]
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "typeSwap": {
+                                    "type": "string"
+                                  },
+                                  "uiAmount": {
+                                    "type": "number"
+                                  },
+                                  "price": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "nearestPrice": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  },
+                                  "changeAmount": {
+                                    "type": "integer"
+                                  },
+                                  "uiChangeAmount": {
+                                    "type": "number"
+                                  },
+                                  "isScaledUiToken": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              }
+                            }
                           }
                         },
                         "hasNext": {
@@ -3587,7 +5852,84 @@
                         "items": {
                           "type": "array",
                           "items": {
-                            "type": "object"
+                            "type": "object",
+                            "required": [
+                              "address",
+                              "base",
+                              "quote"
+                            ],
+                            "properties": {
+                              "address": {
+                                "type": "string"
+                              },
+                              "base": {
+                                "type": "object",
+                                "properties": {
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "icon": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "quote": {
+                                "type": "object",
+                                "properties": {
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "icon": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "createdAt": {
+                                "type": "string"
+                              },
+                              "liquidity": {
+                                "type": "number"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "price": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "source": {
+                                "type": "string"
+                              },
+                              "trade24h": {
+                                "type": "integer"
+                              },
+                              "trade24hChangePercent": {
+                                "type": "number"
+                              },
+                              "uniqueWallet24h": {
+                                "type": "integer"
+                              },
+                              "uniqueWallet24hChangePercent": {
+                                "type": "number"
+                              },
+                              "volume24h": {
+                                "type": "number"
+                              }
+                            }
                           }
                         },
                         "total": {
@@ -3704,7 +6046,10 @@
                                 "type": "string"
                               },
                               "logoURI": {
-                                "type": "string"
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
                               },
                               "liquidity": {
                                 "type": "number"
@@ -4595,7 +6940,7 @@
     },
     "/x402/defi/v3/pair/overview/single": {
       "get": {
-        "summary": "Get detailed overview of a single trading pair including price and liquidity",
+        "summary": "Get overview of a trading pair with price and liquidity",
         "operationId": "x402_defi_v3_pair_overview_single",
         "parameters": [
           {
@@ -4633,7 +6978,307 @@
                       "type": "boolean"
                     },
                     "data": {
-                      "type": "object"
+                      "type": "object",
+                      "required": [
+                        "address",
+                        "base",
+                        "quote",
+                        "source"
+                      ],
+                      "properties": {
+                        "address": {
+                          "type": "string"
+                        },
+                        "base": {
+                          "type": "object",
+                          "properties": {
+                            "address": {
+                              "type": "string"
+                            },
+                            "decimals": {
+                              "type": "integer"
+                            },
+                            "icon": {
+                              "type": "string"
+                            },
+                            "symbol": {
+                              "type": "string"
+                            },
+                            "is_scaled_ui_token": {
+                              "type": "boolean"
+                            },
+                            "multiplier": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            }
+                          }
+                        },
+                        "quote": {
+                          "type": "object",
+                          "properties": {
+                            "address": {
+                              "type": "string"
+                            },
+                            "decimals": {
+                              "type": "integer"
+                            },
+                            "icon": {
+                              "type": "string"
+                            },
+                            "symbol": {
+                              "type": "string"
+                            },
+                            "is_scaled_ui_token": {
+                              "type": "boolean"
+                            },
+                            "multiplier": {
+                              "type": [
+                                "number",
+                                "null"
+                              ]
+                            }
+                          }
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "source": {
+                          "type": "string"
+                        },
+                        "liquidity": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "liquidity_change_percentage_24h": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "price": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade_24h": {
+                          "type": "integer"
+                        },
+                        "trade_24h_change_percent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade_history_24h": {
+                          "type": "integer"
+                        },
+                        "unique_wallet_24h": {
+                          "type": "integer"
+                        },
+                        "unique_wallet_24h_change_percent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "volume_24h": {
+                          "type": "number"
+                        },
+                        "volume_24h_base": {
+                          "type": "number"
+                        },
+                        "volume_24h_quote": {
+                          "type": "number"
+                        },
+                        "trade_12h": {
+                          "type": "integer"
+                        },
+                        "trade_12h_change_percent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade_history_12h": {
+                          "type": "integer"
+                        },
+                        "unique_wallet_12h": {
+                          "type": "integer"
+                        },
+                        "unique_wallet_12h_change_percent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "volume_12h": {
+                          "type": "number"
+                        },
+                        "volume_12h_base": {
+                          "type": "number"
+                        },
+                        "volume_12h_quote": {
+                          "type": "number"
+                        },
+                        "trade_1h": {
+                          "type": "integer"
+                        },
+                        "trade_1h_change_percent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade_history_1h": {
+                          "type": "integer"
+                        },
+                        "unique_wallet_1h": {
+                          "type": "integer"
+                        },
+                        "unique_wallet_1h_change_percent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "volume_1h": {
+                          "type": "number"
+                        },
+                        "volume_1h_base": {
+                          "type": "number"
+                        },
+                        "volume_1h_quote": {
+                          "type": "number"
+                        },
+                        "trade_2h": {
+                          "type": "integer"
+                        },
+                        "trade_2h_change_percent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade_history_2h": {
+                          "type": "integer"
+                        },
+                        "unique_wallet_2h": {
+                          "type": "integer"
+                        },
+                        "unique_wallet_2h_change_percent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "volume_2h": {
+                          "type": "number"
+                        },
+                        "volume_2h_base": {
+                          "type": "number"
+                        },
+                        "volume_2h_quote": {
+                          "type": "number"
+                        },
+                        "trade_4h": {
+                          "type": "integer"
+                        },
+                        "trade_4h_change_percent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade_history_4h": {
+                          "type": "integer"
+                        },
+                        "unique_wallet_4h": {
+                          "type": "integer"
+                        },
+                        "unique_wallet_4h_change_percent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "volume_4h": {
+                          "type": "number"
+                        },
+                        "volume_4h_base": {
+                          "type": "number"
+                        },
+                        "volume_4h_quote": {
+                          "type": "number"
+                        },
+                        "trade_8h": {
+                          "type": "integer"
+                        },
+                        "trade_8h_change_percent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade_history_8h": {
+                          "type": "integer"
+                        },
+                        "unique_wallet_8h": {
+                          "type": "integer"
+                        },
+                        "unique_wallet_8h_change_percent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "volume_8h": {
+                          "type": "number"
+                        },
+                        "volume_8h_base": {
+                          "type": "number"
+                        },
+                        "volume_8h_quote": {
+                          "type": "number"
+                        },
+                        "trade_30m": {
+                          "type": "integer"
+                        },
+                        "trade_30m_change_percent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "trade_history_30m": {
+                          "type": "integer"
+                        },
+                        "unique_wallet_30m": {
+                          "type": "integer"
+                        },
+                        "unique_wallet_30m_change_percent": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "volume_30m": {
+                          "type": "number"
+                        },
+                        "volume_30m_base": {
+                          "type": "number"
+                        },
+                        "volume_30m_quote": {
+                          "type": "number"
+                        }
+                      }
                     }
                   }
                 },
@@ -4827,7 +7472,7 @@
     },
     "/x402/defi/v3/price/stats/single": {
       "get": {
-        "summary": "Get price change statistics across multiple timeframes for a single token",
+        "summary": "Get multi-timeframe price change statistics for a token",
         "operationId": "x402_defi_v3_price_stats_single",
         "parameters": [
           {
@@ -5250,10 +7895,18 @@
                                         "last_trade_unix_time": {
                                           "type": "integer"
                                         },
-                                        "last_trade_human_time": "2025-03-13T09:51:25.000Z",
-                                        "source": "Orca",
-                                        "base_mint": "So11111111111111111111111111111111111111112",
-                                        "quote_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+                                        "last_trade_human_time": {
+                                          "type": "string"
+                                        },
+                                        "source": {
+                                          "type": "string"
+                                        },
+                                        "base_mint": {
+                                          "type": "string"
+                                        },
+                                        "quote_mint": {
+                                          "type": "string"
+                                        },
                                         "amount_base": {
                                           "type": "number"
                                         },
@@ -5417,7 +8070,7 @@
                                 "base_mint": "So11111111111111111111111111111111111111112",
                                 "quote_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
                                 "amount_base": 173168.012566278,
-                                "amout_quote": 6036799.351477
+                                "amount_quote": 6036799.351477
                               },
                               {
                                 "name": "SOL-USDC",
@@ -5435,7 +8088,7 @@
                                 "base_mint": "So11111111111111111111111111111111111111112",
                                 "quote_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
                                 "amount_base": 41501.80227063,
-                                "amout_quote": 2394129.681614,
+                                "amount_quote": 2394129.681614,
                                 "creation_time": "2024-08-07T21:17:56.963Z"
                               }
                             ]
@@ -5562,10 +8215,30 @@
                           "type": "string"
                         },
                         "decimals": {
-                          "type": "string"
+                          "type": "integer"
                         },
                         "extensions": {
-                          "type": "object"
+                          "type": "object",
+                          "properties": {
+                            "twitter": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "website": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "telegram": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
                         },
                         "logo_uri": {
                           "type": "string"
@@ -5591,7 +8264,7 @@
                         "address": "0x60a3E35Cc302bFA44Cb288Bc5a4F316Fdb1adb42",
                         "name": "EURC",
                         "symbol": "EURC",
-                        "decimals": "6",
+                        "decimals": 6,
                         "extensions": {
                           "twitter": "https://twitter.com/circlepay",
                           "website": "https://www.circle.com",
@@ -5755,7 +8428,7 @@
     },
     "/x402/defi/v3/token/list": {
       "get": {
-        "summary": "List tokens with v3 market data including price, volume, and market cap",
+        "summary": "List tokens with price, volume, and market cap data",
         "operationId": "x402_defi_v3_token_list",
         "parameters": [
           {
@@ -5882,10 +8555,16 @@
                                 "type": "integer"
                               },
                               "recent_listing_time": {
-                                "type": "integer"
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
                               }
                             }
                           }
+                        },
+                        "hasNext": {
+                          "type": "boolean"
                         }
                       }
                     }
@@ -6082,8 +8761,7 @@
                             "holder": 1420526,
                             "recent_listing_time": null
                           }
-                        ],
-                        "has_next": true
+                        ]
                       },
                       "success": true
                     }
@@ -6107,7 +8785,7 @@
     },
     "/x402/defi/v3/token/market-data": {
       "get": {
-        "summary": "Get market data for a token including price, volume, liquidity, and market cap",
+        "summary": "Get token market data: price, volume, liquidity, and market cap",
         "operationId": "x402_defi_v3_token_market_data",
         "parameters": [
           {
@@ -6236,7 +8914,7 @@
     },
     "/x402/defi/v3/token/meme/detail/single": {
       "get": {
-        "summary": "Get detailed meme token metrics including social signals and price momentum",
+        "summary": "Get meme token metrics: social signals and price momentum",
         "operationId": "x402_defi_v3_token_meme_detail_single",
         "parameters": [
           {
@@ -6274,7 +8952,186 @@
                       "type": "boolean"
                     },
                     "data": {
-                      "type": "object"
+                      "type": "object",
+                      "required": [
+                        "address",
+                        "name",
+                        "symbol",
+                        "price"
+                      ],
+                      "properties": {
+                        "address": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "symbol": {
+                          "type": "string"
+                        },
+                        "decimals": {
+                          "type": "integer"
+                        },
+                        "extensions": {
+                          "type": [
+                            "object",
+                            "null"
+                          ],
+                          "properties": {
+                            "twitter": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "website": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            },
+                            "description": {
+                              "type": [
+                                "string",
+                                "null"
+                              ]
+                            }
+                          }
+                        },
+                        "logo_uri": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "price": {
+                          "type": "number"
+                        },
+                        "liquidity": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "circulating_supply": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "market_cap": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "total_supply": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "fdv": {
+                          "type": [
+                            "number",
+                            "null"
+                          ]
+                        },
+                        "meme_info": {
+                          "type": "object",
+                          "properties": {
+                            "source": {
+                              "type": "string"
+                            },
+                            "platform_id": {
+                              "type": "string"
+                            },
+                            "created_at": {
+                              "type": "object",
+                              "properties": {
+                                "tx_hash": {
+                                  "type": "string"
+                                },
+                                "slot": {
+                                  "type": "integer"
+                                },
+                                "block_time": {
+                                  "type": "integer"
+                                }
+                              }
+                            },
+                            "creation_time": {
+                              "type": "integer"
+                            },
+                            "creator": {
+                              "type": "string"
+                            },
+                            "updated_at": {
+                              "type": "object",
+                              "properties": {
+                                "tx_hash": {
+                                  "type": "string"
+                                },
+                                "slot": {
+                                  "type": "integer"
+                                }
+                              }
+                            },
+                            "graduated_at": {
+                              "type": "object",
+                              "properties": {
+                                "slot": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ]
+                                },
+                                "tx_hash": {
+                                  "type": [
+                                    "string",
+                                    "null"
+                                  ]
+                                },
+                                "block_time": {
+                                  "type": [
+                                    "integer",
+                                    "null"
+                                  ]
+                                }
+                              }
+                            },
+                            "graduated": {
+                              "type": "boolean"
+                            },
+                            "graduated_time": {
+                              "type": [
+                                "integer",
+                                "null"
+                              ]
+                            },
+                            "pool": {
+                              "type": "object",
+                              "properties": {
+                                "address": {
+                                  "type": "string"
+                                },
+                                "real_sol_reserves": {
+                                  "type": "string"
+                                },
+                                "real_token_reserves": {
+                                  "type": "string"
+                                },
+                                "token_total_supply": {
+                                  "type": "string"
+                                },
+                                "virtual_token_reserves": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 },
@@ -6352,7 +9209,7 @@
     },
     "/x402/defi/v3/token/meme/list": {
       "get": {
-        "summary": "List meme tokens with social signals, price momentum, and trading activity",
+        "summary": "List meme tokens with social signals and price momentum",
         "operationId": "x402_defi_v3_token_meme_list",
         "parameters": [
           {
@@ -6390,10 +9247,259 @@
                         "items": {
                           "type": "array",
                           "items": {
-                            "type": "object"
+                            "type": "object",
+                            "required": [
+                              "address",
+                              "name",
+                              "symbol"
+                            ],
+                            "properties": {
+                              "address": {
+                                "type": "string"
+                              },
+                              "logo_uri": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "symbol": {
+                                "type": "string"
+                              },
+                              "decimals": {
+                                "type": "integer"
+                              },
+                              "extensions": {
+                                "type": [
+                                  "object",
+                                  "null"
+                                ],
+                                "properties": {
+                                  "twitter": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "website": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "telegram": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "description": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "market_cap": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "fdv": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "total_supply": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "circulating_supply": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "liquidity": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "last_trade_unix_time": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "buy_24h": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "buy_24h_change_percent": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "sell_24h": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "sell_24h_change_percent": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "volume_buy_24h_usd": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "volume_sell_24h_usd": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "volume_1m_usd": {
+                                "type": "number"
+                              },
+                              "volume_1m_change_percent": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "trade_1m_count": {
+                                "type": "integer"
+                              },
+                              "volume_5m_usd": {
+                                "type": "number"
+                              },
+                              "volume_5m_change_percent": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "trade_5m_count": {
+                                "type": "integer"
+                              },
+                              "volume_30m_usd": {
+                                "type": "number"
+                              },
+                              "volume_30m_change_percent": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "trade_30m_count": {
+                                "type": "integer"
+                              },
+                              "volume_1h_usd": {
+                                "type": "number"
+                              },
+                              "volume_1h_change_percent": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "trade_1h_count": {
+                                "type": "integer"
+                              },
+                              "volume_2h_usd": {
+                                "type": "number"
+                              },
+                              "volume_2h_change_percent": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "trade_2h_count": {
+                                "type": "integer"
+                              },
+                              "volume_4h_usd": {
+                                "type": "number"
+                              },
+                              "volume_4h_change_percent": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "trade_4h_count": {
+                                "type": "integer"
+                              },
+                              "volume_8h_usd": {
+                                "type": "number"
+                              },
+                              "volume_8h_change_percent": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "trade_8h_count": {
+                                "type": "integer"
+                              },
+                              "volume_24h_usd": {
+                                "type": "number"
+                              },
+                              "volume_24h_change_percent": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "trade_24h_count": {
+                                "type": "integer"
+                              },
+                              "volume_7d_usd": {
+                                "type": "number"
+                              },
+                              "volume_7d_change_percent": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "trade_7d_count": {
+                                "type": "integer"
+                              },
+                              "volume_30d_usd": {
+                                "type": "number"
+                              },
+                              "volume_30d_change_percent": {
+                                "type": [
+                                  "number",
+                                  "null"
+                                ]
+                              },
+                              "trade_30d_count": {
+                                "type": "integer"
+                              }
+                            }
                           }
                         },
-                        "hasNext": {
+                        "has_next": {
                           "type": "boolean"
                         }
                       }
@@ -6640,7 +9746,7 @@
     },
     "/x402/defi/v3/token/meta-data/single": {
       "get": {
-        "summary": "Get metadata for a single token including name, symbol, decimals, and logo",
+        "summary": "Get token metadata: name, symbol, decimals, and logo",
         "operationId": "x402_defi_v3_token_meta_data_single",
         "parameters": [
           {
@@ -6685,7 +9791,7 @@
                         "name",
                         "decimals",
                         "extensions",
-                        "logoURI"
+                        "logo_uri"
                       ],
                       "properties": {
                         "address": {
@@ -6893,7 +9999,7 @@
     },
     "/x402/defi/v3/token/trade-data/single": {
       "get": {
-        "summary": "Get trade metrics for a single token including buy/sell counts and volume",
+        "summary": "Get trade metrics for a token: buy/sell counts and volume",
         "operationId": "x402_defi_v3_token_trade_data_single",
         "parameters": [
           {
@@ -8238,10 +11344,126 @@
                         "items": {
                           "type": "array",
                           "items": {
-                            "type": "object"
+                            "type": "object",
+                            "required": [
+                              "tx_hash",
+                              "tx_type",
+                              "block_unix_time",
+                              "owner",
+                              "from",
+                              "to"
+                            ],
+                            "properties": {
+                              "tx_type": {
+                                "type": "string"
+                              },
+                              "tx_hash": {
+                                "type": "string"
+                              },
+                              "ins_index": {
+                                "type": "integer"
+                              },
+                              "inner_ins_index": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "block_unix_time": {
+                                "type": "integer"
+                              },
+                              "block_number": {
+                                "type": "integer"
+                              },
+                              "volume_usd": {
+                                "type": "number"
+                              },
+                              "volume": {
+                                "type": "number"
+                              },
+                              "owner": {
+                                "type": "string"
+                              },
+                              "signers": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "source": {
+                                "type": "string"
+                              },
+                              "side": {
+                                "type": "string"
+                              },
+                              "alias": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "price_pair": {
+                                "type": "number"
+                              },
+                              "from": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "price": {
+                                    "type": "number"
+                                  },
+                                  "amount": {
+                                    "type": "string"
+                                  },
+                                  "ui_amount": {
+                                    "type": "number"
+                                  },
+                                  "ui_change_amount": {
+                                    "type": "number"
+                                  }
+                                }
+                              },
+                              "to": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "price": {
+                                    "type": "number"
+                                  },
+                                  "amount": {
+                                    "type": "string"
+                                  },
+                                  "ui_amount": {
+                                    "type": "number"
+                                  },
+                                  "ui_change_amount": {
+                                    "type": "number"
+                                  }
+                                }
+                              },
+                              "pool_id": {
+                                "type": "string"
+                              }
+                            }
                           }
                         },
-                        "hasNext": {
+                        "has_next": {
                           "type": "boolean"
                         }
                       }
@@ -8520,8 +11742,7 @@
                             },
                             "pool_id": "D45QQMsxGhohYXGZKDJEowMv2HArrKAsw5V3JnyDZWeS"
                           }
-                        ],
-                        "hasNext": true
+                        ]
                       }
                     }
                   }
@@ -8591,10 +11812,126 @@
                         "items": {
                           "type": "array",
                           "items": {
-                            "type": "object"
+                            "type": "object",
+                            "required": [
+                              "tx_hash",
+                              "tx_type",
+                              "block_unix_time",
+                              "owner",
+                              "from",
+                              "to"
+                            ],
+                            "properties": {
+                              "tx_type": {
+                                "type": "string"
+                              },
+                              "tx_hash": {
+                                "type": "string"
+                              },
+                              "ins_index": {
+                                "type": "integer"
+                              },
+                              "inner_ins_index": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "block_unix_time": {
+                                "type": "integer"
+                              },
+                              "block_number": {
+                                "type": "integer"
+                              },
+                              "volume_usd": {
+                                "type": "number"
+                              },
+                              "volume": {
+                                "type": "number"
+                              },
+                              "owner": {
+                                "type": "string"
+                              },
+                              "signers": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "source": {
+                                "type": "string"
+                              },
+                              "side": {
+                                "type": "string"
+                              },
+                              "alias": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "price_pair": {
+                                "type": "number"
+                              },
+                              "from": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "price": {
+                                    "type": "number"
+                                  },
+                                  "amount": {
+                                    "type": "string"
+                                  },
+                                  "ui_amount": {
+                                    "type": "number"
+                                  },
+                                  "ui_change_amount": {
+                                    "type": "number"
+                                  }
+                                }
+                              },
+                              "to": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "price": {
+                                    "type": "number"
+                                  },
+                                  "amount": {
+                                    "type": "string"
+                                  },
+                                  "ui_amount": {
+                                    "type": "number"
+                                  },
+                                  "ui_change_amount": {
+                                    "type": "number"
+                                  }
+                                }
+                              },
+                              "pool_id": {
+                                "type": "string"
+                              }
+                            }
                           }
                         },
-                        "hasNext": {
+                        "has_next": {
                           "type": "boolean"
                         }
                       }
@@ -8873,8 +12210,7 @@
                             },
                             "pool_id": "D45QQMsxGhohYXGZKDJEowMv2HArrKAsw5V3JnyDZWeS"
                           }
-                        ],
-                        "hasNext": true
+                        ]
                       }
                     }
                   }
@@ -8897,7 +12233,7 @@
     },
     "/x402/defi/v3/txs": {
       "get": {
-        "summary": "List trades across all tokens or filtered by a specified address",
+        "summary": "List trades across tokens or filtered by address",
         "operationId": "x402_defi_v3_txs",
         "parameters": [
           {
@@ -8944,7 +12280,136 @@
                         "items": {
                           "type": "array",
                           "items": {
-                            "type": "object"
+                            "type": "object",
+                            "required": [
+                              "tx_hash",
+                              "block_unix_time",
+                              "base",
+                              "quote"
+                            ],
+                            "properties": {
+                              "base": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "price": {
+                                    "type": "number"
+                                  },
+                                  "amount": {
+                                    "type": "string"
+                                  },
+                                  "ui_amount": {
+                                    "type": "number"
+                                  },
+                                  "ui_change_amount": {
+                                    "type": "number"
+                                  },
+                                  "type_swap": {
+                                    "type": "string"
+                                  },
+                                  "is_scaled_ui_token": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "quote": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "price": {
+                                    "type": "number"
+                                  },
+                                  "amount": {
+                                    "type": "string"
+                                  },
+                                  "ui_amount": {
+                                    "type": "number"
+                                  },
+                                  "ui_change_amount": {
+                                    "type": "number"
+                                  },
+                                  "type_swap": {
+                                    "type": "string"
+                                  },
+                                  "is_scaled_ui_token": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "tx_type": {
+                                "type": "string"
+                              },
+                              "tx_hash": {
+                                "type": "string"
+                              },
+                              "ins_index": {
+                                "type": "integer"
+                              },
+                              "inner_ins_index": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "block_unix_time": {
+                                "type": "integer"
+                              },
+                              "block_number": {
+                                "type": "integer"
+                              },
+                              "volume_usd": {
+                                "type": "number"
+                              },
+                              "volume": {
+                                "type": "number"
+                              },
+                              "owner": {
+                                "type": "string"
+                              },
+                              "signers": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "source": {
+                                "type": "string"
+                              },
+                              "interacted_program_id": {
+                                "type": "string"
+                              },
+                              "pool_id": {
+                                "type": "string"
+                              }
+                            }
                           }
                         },
                         "hasNext": {
@@ -9084,8 +12549,7 @@
                             "interacted_program_id": "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
                             "pool_id": "8oFgUziy5yRpQ3rsmZ2qEMcxpVkHiiwkebnsgMcHTR1w"
                           }
-                        ],
-                        "has_next": true
+                        ]
                       },
                       "success": true
                     }
@@ -9216,7 +12680,136 @@
                         "items": {
                           "type": "array",
                           "items": {
-                            "type": "object"
+                            "type": "object",
+                            "required": [
+                              "tx_hash",
+                              "block_unix_time",
+                              "base",
+                              "quote"
+                            ],
+                            "properties": {
+                              "base": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "price": {
+                                    "type": "number"
+                                  },
+                                  "amount": {
+                                    "type": "string"
+                                  },
+                                  "ui_amount": {
+                                    "type": "number"
+                                  },
+                                  "ui_change_amount": {
+                                    "type": "number"
+                                  },
+                                  "type_swap": {
+                                    "type": "string"
+                                  },
+                                  "is_scaled_ui_token": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "quote": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "price": {
+                                    "type": "number"
+                                  },
+                                  "amount": {
+                                    "type": "string"
+                                  },
+                                  "ui_amount": {
+                                    "type": "number"
+                                  },
+                                  "ui_change_amount": {
+                                    "type": "number"
+                                  },
+                                  "type_swap": {
+                                    "type": "string"
+                                  },
+                                  "is_scaled_ui_token": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "tx_type": {
+                                "type": "string"
+                              },
+                              "tx_hash": {
+                                "type": "string"
+                              },
+                              "ins_index": {
+                                "type": "integer"
+                              },
+                              "inner_ins_index": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "block_unix_time": {
+                                "type": "integer"
+                              },
+                              "block_number": {
+                                "type": "integer"
+                              },
+                              "volume_usd": {
+                                "type": "number"
+                              },
+                              "volume": {
+                                "type": "number"
+                              },
+                              "owner": {
+                                "type": "string"
+                              },
+                              "signers": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "source": {
+                                "type": "string"
+                              },
+                              "interacted_program_id": {
+                                "type": "string"
+                              },
+                              "pool_id": {
+                                "type": "string"
+                              }
+                            }
                           }
                         },
                         "hasNext": {
@@ -9356,8 +12949,7 @@
                             "interacted_program_id": "675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8",
                             "pool_id": "8oFgUziy5yRpQ3rsmZ2qEMcxpVkHiiwkebnsgMcHTR1w"
                           }
-                        ],
-                        "has_next": true
+                        ]
                       },
                       "success": true
                     }
@@ -9381,7 +12973,7 @@
     },
     "/x402/holder/v1/distribution": {
       "get": {
-        "summary": "Get holder distribution breakdown by wallet size tiers for a token",
+        "summary": "Get holder distribution by wallet size tiers for a token",
         "operationId": "x402_holder_v1_distribution",
         "parameters": [
           {
@@ -9582,7 +13174,69 @@
                       "type": "boolean"
                     },
                     "data": {
-                      "type": "object"
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "token": {
+                            "type": "string"
+                          },
+                          "price": {
+                            "type": [
+                              "number",
+                              "null"
+                            ]
+                          },
+                          "liquidity": {
+                            "type": [
+                              "number",
+                              "null"
+                            ]
+                          },
+                          "market_cap": {
+                            "type": [
+                              "number",
+                              "null"
+                            ]
+                          },
+                          "net_flow": {
+                            "type": "number"
+                          },
+                          "smart_traders_no": {
+                            "type": "integer"
+                          },
+                          "trader_style": {
+                            "type": "string"
+                          },
+                          "volume_usd": {
+                            "type": "number"
+                          },
+                          "volume_buy_usd": {
+                            "type": "number"
+                          },
+                          "volume_sell_usd": {
+                            "type": "number"
+                          },
+                          "symbol": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "logo_uri": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "price_change_percent": {
+                            "type": [
+                              "number",
+                              "null"
+                            ]
+                          }
+                        }
+                      }
                     }
                   }
                 },
@@ -9629,7 +13283,7 @@
     },
     "/x402/token/v1/holder/batch": {
       "post": {
-        "summary": "Check holder status for multiple wallet addresses in a single request",
+        "summary": "Check token holder status for multiple wallet addresses",
         "operationId": "x402_token_v1_holder_batch",
         "parameters": [
           {
@@ -9658,7 +13312,42 @@
                       "type": "boolean"
                     },
                     "data": {
-                      "type": "object"
+                      "type": "object",
+                      "required": [
+                        "items"
+                      ],
+                      "properties": {
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "required": [
+                              "balance",
+                              "decimals",
+                              "mint",
+                              "owner",
+                              "amount"
+                            ],
+                            "properties": {
+                              "balance": {
+                                "type": "string"
+                              },
+                              "decimals": {
+                                "type": "integer"
+                              },
+                              "mint": {
+                                "type": "string"
+                              },
+                              "owner": {
+                                "type": "string"
+                              },
+                              "amount": {
+                                "type": "number"
+                              }
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 },
@@ -9744,7 +13433,7 @@
     },
     "/x402/token/v1/transfer": {
       "post": {
-        "summary": "List token transfer transactions filtered by token address and optional wallet, amount, or time range",
+        "summary": "List token transfers filtered by address, amount, or time",
         "operationId": "x402_token_v1_transfer",
         "parameters": [
           {
@@ -9897,7 +13586,7 @@
     },
     "/x402/token/v1/transfer/total": {
       "post": {
-        "summary": "Get total token transfer count and volume filtered by token address and optional wallet, amount, or time range",
+        "summary": "Get total transfer count and volume filtered by token address",
         "operationId": "x402_token_v1_transfer_total",
         "parameters": [
           {
@@ -9926,7 +13615,15 @@
                       "type": "boolean"
                     },
                     "data": {
-                      "type": "object"
+                      "type": "object",
+                      "required": [
+                        "total"
+                      ],
+                      "properties": {
+                        "total": {
+                          "type": "integer"
+                        }
+                      }
                     }
                   }
                 },
@@ -10048,7 +13745,7 @@
           {
             "name": "sort_by",
             "in": "query",
-            "required": true,
+            "required": false,
             "schema": {
               "type": "string",
               "enum": [
@@ -10061,7 +13758,7 @@
           {
             "name": "sort_type",
             "in": "query",
-            "required": true,
+            "required": false,
             "schema": {
               "type": "string",
               "enum": [
@@ -10255,7 +13952,160 @@
                         "items": {
                           "type": "array",
                           "items": {
-                            "type": "object"
+                            "type": "object",
+                            "required": [
+                              "tx_hash",
+                              "block_unix_time",
+                              "base",
+                              "quote"
+                            ],
+                            "properties": {
+                              "base": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": "integer"
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "type_swap": {
+                                    "type": "string"
+                                  },
+                                  "ui_amount": {
+                                    "type": "number"
+                                  },
+                                  "price": {
+                                    "type": "number"
+                                  },
+                                  "nearest_price": {
+                                    "type": "number"
+                                  },
+                                  "change_amount": {
+                                    "type": "integer"
+                                  },
+                                  "ui_change_amount": {
+                                    "type": "number"
+                                  },
+                                  "is_scaled_ui_token": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "quote": {
+                                "type": "object",
+                                "properties": {
+                                  "symbol": {
+                                    "type": "string"
+                                  },
+                                  "decimals": {
+                                    "type": "integer"
+                                  },
+                                  "address": {
+                                    "type": "string"
+                                  },
+                                  "amount": {
+                                    "type": "integer"
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "type_swap": {
+                                    "type": "string"
+                                  },
+                                  "ui_amount": {
+                                    "type": "number"
+                                  },
+                                  "price": {
+                                    "type": "number"
+                                  },
+                                  "nearest_price": {
+                                    "type": "number"
+                                  },
+                                  "change_amount": {
+                                    "type": "integer"
+                                  },
+                                  "ui_change_amount": {
+                                    "type": "number"
+                                  },
+                                  "is_scaled_ui_token": {
+                                    "type": "boolean"
+                                  },
+                                  "multiplier": {
+                                    "type": [
+                                      "number",
+                                      "null"
+                                    ]
+                                  }
+                                }
+                              },
+                              "base_price": {
+                                "type": "number"
+                              },
+                              "quote_price": {
+                                "type": "number"
+                              },
+                              "tx_hash": {
+                                "type": "string"
+                              },
+                              "source": {
+                                "type": "string"
+                              },
+                              "block_unix_time": {
+                                "type": "integer"
+                              },
+                              "tx_type": {
+                                "type": "string"
+                              },
+                              "address": {
+                                "type": "string"
+                              },
+                              "owner": {
+                                "type": "string"
+                              },
+                              "block_number": {
+                                "type": "integer"
+                              },
+                              "volume_usd": {
+                                "type": "number"
+                              },
+                              "volume": {
+                                "type": "number"
+                              },
+                              "ins_index": {
+                                "type": "integer"
+                              },
+                              "inner_ins_index": {
+                                "type": [
+                                  "integer",
+                                  "null"
+                                ]
+                              },
+                              "signers": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "interacted_program_id": {
+                                "type": "string"
+                              }
+                            }
                           }
                         },
                         "hasNext": {
